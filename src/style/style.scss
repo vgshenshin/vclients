@@ -1,0 +1,51 @@
+@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto&display=swap");
+
+* {
+	font-family: "Open Sans", sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul,
+li,
+dl {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	display: inline-block;
+	&:hover {
+		text-decoration: none;
+		color: inherit;
+	}
+}
+
+p {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	// background: linear-gradient(75.02deg, #c6ddf5 0.85%, #84a5f4 99.7%);
+	background: linear-gradient(75.02deg, #1d3560 0.85%, #0c244f 99.7%);
+	// background: #1d3560;
+}
+
+body {
+	position: relative;
+}
