@@ -29,15 +29,15 @@ const useAppointmentService = () => {
 	const getAllActiveAppointments = async (): Promise<ActiveAppointment[]> => {
 		const base = await getAllAppointments();
 
-		const transformed: ActiveAppointment[] = base.map(
-			({ id, date, name, service, phone }) => ({
+		const transformed: ActiveAppointment[] = base
+			.filter((item) => !item.canceled)
+			.map(({ id, date, name, service, phone }) => ({
 				id,
 				date,
 				name,
 				service,
 				phone,
-			})
-		);
+			}));
 
 		return transformed;
 	};
