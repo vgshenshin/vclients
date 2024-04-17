@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
-import dayjs from "dayjs";
-import { ActiveAppointment } from "../../shared/interfaces/appointment.interface";
 import "./appointmentItem.scss";
+import dayjs from "dayjs";
+import { Optional } from "utility-types";
 
-const AppointmentItem = ({
+import { IAppointment } from "../../shared/interfaces/appointment.interface";
+
+type AppointmentProps = Optional<IAppointment, "canceled">;
+
+function AppointmentItem({
 	id,
 	name,
 	date,
 	service,
 	phone,
-}: ActiveAppointment) => {
+	canceled,
+}: AppointmentProps) {
 	const [timeLeft, changeTimeLeft] = useState<string | null>(null);
-	const formatedDate = dayjs(date).format("DD/MM/YYYY HH:mm");
 
 	useEffect(() => {
 		setTime();
@@ -27,7 +31,9 @@ const AppointmentItem = ({
 		const intervalId = setInterval(setTime, 60000);
 		return () => clearInterval(intervalId);
 	}, [date]);
+	console.log(canceled);
 
+	const formatedDate = dayjs(date).format("DD/MM/YYYY HH:mm");
 	return (
 		<div className="appointment">
 			<div className="appointment__info">
@@ -36,14 +42,20 @@ const AppointmentItem = ({
 				<span className="appointment__service">Service: {service}</span>
 				<span className="appointment__phone">Phone: {phone}</span>
 			</div>
-			<div className="appointment__time">
-				<span>Time left:</span>
-				<span className="appointment__timer">{timeLeft}</span>
-			</div>
-			<button className="appointment__cancel">Cancel</button>
-			{/* <div className="appointment__canceled">Canceled</div> */}
+			{!canceled ? (
+				<>
+					<div className="appointment__time">
+						<span>Time left:</span>
+						<span className="appointment__timer">{timeLeft}</span>
+					</div>
+					<button className="appointment__cancel">Cancel</button>
+				</>
+			) : null}
+			{canceled ? (
+				<div className="appointment__canceled">Canceled</div>
+			) : null}
 		</div>
 	);
-};
+}
 
 export default AppointmentItem;

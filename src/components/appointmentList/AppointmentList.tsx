@@ -16,7 +16,6 @@ function AppointmentList() {
 	useEffect(() => {
 		getActiveAppointments();
 	}, []);
-	console.log(appointmentLoadingStatus);
 
 	if (appointmentLoadingStatus === "loading") {
 		return <Spinner />;
