@@ -1,5 +1,6 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 
+import CancelModal from "../modal/CancelModal";
 import AppointmentItem from "../appointmentItem.tsx/AppointmentItem";
 import Spinner from "../spinner/Spinner";
 import Error from "../error/Error";
@@ -8,11 +9,15 @@ import { AppointmentContext } from "../../context/appointmets/AppointmentsContex
 import "../../pages/schedule/schedulePage.scss";
 
 function AppointmentList() {
+	const [isOpen, setIsOpen] = useState(false);
+	const [selectedId, selectId] = useState(0);
+
 	const {
 		appointmentLoadingStatus,
 		activeAppointment,
 		getActiveAppointments,
 	} = useContext(AppointmentContext);
+
 	useEffect(() => {
 		getActiveAppointments();
 	}, []);
@@ -36,8 +41,18 @@ function AppointmentList() {
 	return (
 		<>
 			{activeAppointment.map((item) => {
-				return <AppointmentItem key={item.id} {...item} />;
+				return (
+					<AppointmentItem
+						{...item}
+						key={item.id}
+						openModal={setIsOpen}
+						selectId={() => selectId(item.id)}
+					/>
+				);
 			})}
+			{isOpen ? (
+				<CancelModal closeModal={setIsOpen} selectedId={selectedId} />
+			) : null}
 		</>
 	);
 }

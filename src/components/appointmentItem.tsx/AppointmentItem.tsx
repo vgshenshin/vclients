@@ -5,7 +5,10 @@ import { Optional } from "utility-types";
 
 import { IAppointment } from "../../shared/interfaces/appointment.interface";
 
-type AppointmentProps = Optional<IAppointment, "canceled">;
+type AppointmentProps = Optional<IAppointment, "canceled"> & {
+	openModal: (state: boolean) => void;
+	selectId: () => void;
+};
 
 function AppointmentItem({
 	id,
@@ -14,6 +17,8 @@ function AppointmentItem({
 	service,
 	phone,
 	canceled,
+	openModal,
+	selectId,
 }: AppointmentProps) {
 	const [timeLeft, changeTimeLeft] = useState<string | null>(null);
 
@@ -31,7 +36,6 @@ function AppointmentItem({
 		const intervalId = setInterval(setTime, 60000);
 		return () => clearInterval(intervalId);
 	}, [date]);
-	console.log(canceled);
 
 	const formatedDate = dayjs(date).format("DD/MM/YYYY HH:mm");
 	return (
@@ -48,7 +52,15 @@ function AppointmentItem({
 						<span>Time left:</span>
 						<span className="appointment__timer">{timeLeft}</span>
 					</div>
-					<button className="appointment__cancel">Cancel</button>
+					<button
+						className="appointment__cancel"
+						onClick={() => {
+							openModal(true);
+							selectId();
+						}}
+					>
+						Cancel
+					</button>
 				</>
 			) : null}
 			{canceled ? (
