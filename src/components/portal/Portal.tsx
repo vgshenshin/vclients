@@ -9,7 +9,7 @@ interface PortalProps {
 function createElementWrapper(wrapperId: string) {
 	const wrapperElement = document.createElement("div");
 	wrapperElement.setAttribute("id", wrapperId);
-	wrapperElement.setAttribute("class", "modal");
+	// wrapperElement.setAttribute("class", "modal");
 	document.body.append(wrapperElement);
 	return wrapperElement;
 }

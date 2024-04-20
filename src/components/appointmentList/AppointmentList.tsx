@@ -50,9 +50,11 @@ function AppointmentList() {
 					/>
 				);
 			})}
-			{isOpen ? (
-				<CancelModal closeModal={setIsOpen} selectedId={selectedId} />
-			) : null}
+			<CancelModal
+				closeModal={setIsOpen}
+				selectedId={selectedId}
+				isOpen={isOpen}
+			/>
 		</>
 	);
 }
