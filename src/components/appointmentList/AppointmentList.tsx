@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 
 import CancelModal from "../modal/CancelModal";
 import AppointmentItem from "../appointmentItem.tsx/AppointmentItem";
@@ -20,6 +20,11 @@ function AppointmentList() {
 
 	useEffect(() => {
 		getActiveAppointments();
+	}, []);
+
+	const handleOpenModal = useCallback((id: number) => {
+		setIsOpen(true);
+		selectId(id);
 	}, []);
 
 	if (appointmentLoadingStatus === "loading") {
@@ -45,8 +50,7 @@ function AppointmentList() {
 					<AppointmentItem
 						{...item}
 						key={item.id}
-						openModal={setIsOpen}
-						selectId={() => selectId(item.id)}
+						openModal={handleOpenModal}
 					/>
 				);
 			})}
