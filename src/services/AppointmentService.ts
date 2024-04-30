@@ -46,7 +46,22 @@ const useAppointmentService = () => {
 		return transformed;
 	};
 
-	return { loadingStatus, getAllAppointments, getAllActiveAppointments };
+	const cancelOneAppointment = async (id: number) => {
+		return await request({
+			url: `${_apiBase}/${id}`,
+			method: "PATCH",
+			body: JSON.stringify({
+				canceled: true,
+			}),
+		});
+	};
+
+	return {
+		loadingStatus,
+		getAllAppointments,
+		getAllActiveAppointments,
+		cancelOneAppointment,
+	};
 };
 
 export default useAppointmentService;
