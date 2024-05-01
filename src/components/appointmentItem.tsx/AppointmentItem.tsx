@@ -7,6 +7,7 @@ import { IAppointment } from "../../shared/interfaces/appointment.interface";
 
 type AppointmentProps = Optional<IAppointment, "canceled"> & {
 	openModal: (state: number) => void;
+	getActiveAppointments: () => void;
 };
 
 const AppointmentItem = memo(
@@ -18,6 +19,7 @@ const AppointmentItem = memo(
 		phone,
 		canceled,
 		openModal,
+		getActiveAppointments,
 	}: AppointmentProps) => {
 		const [timeLeft, changeTimeLeft] = useState<string | null>(null);
 
@@ -30,6 +32,14 @@ const AppointmentItem = memo(
 			function setTime() {
 				const hours = getZero(dayjs(date).diff(undefined, "h"));
 				const mimutes = getZero(dayjs(date).diff(undefined, "m") % 60);
+
+				if (+hours <= 0 && +mimutes <= 0) {
+					if (getActiveAppointments) {
+						getActiveAppointments();
+					}
+					clearInterval(intervalId);
+				}
+
 				changeTimeLeft(`${hours}:${mimutes}`);
 			}
 			const intervalId = setInterval(setTime, 60000);
