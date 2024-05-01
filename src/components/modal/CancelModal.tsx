@@ -7,16 +7,17 @@ import { CSSTransition } from "react-transition-group";
 import "./modal.scss";
 
 interface ICancelModalProps {
-	closeModal: (state: boolean) => void;
+	handleClose: (state: boolean) => void;
 	selectedId: number;
 	isOpen: boolean;
 }
 
-function CancelModal({ closeModal, selectedId, isOpen }: ICancelModalProps) {
+function CancelModal({ handleClose, selectedId, isOpen }: ICancelModalProps) {
 	const { getActiveAppointments } = useContext(AppointmentContext);
 	const { cancelOneAppointment } = useAppointmentService();
 
 	const nodeRef = useRef<HTMLDivElement>(null);
+	const cancelStatusRef = useRef<boolean | null>(null);
 
 	const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
 	const [cancelStatus, setCancelStatus] = useState<boolean | null>(null);
@@ -25,28 +26,30 @@ function CancelModal({ closeModal, selectedId, isOpen }: ICancelModalProps) {
 		setBtnDisabled(true);
 		cancelOneAppointment(id)
 			.then(() => {
-				console.log("done");
 				setCancelStatus(true);
 			})
 			.catch(() => {
-				console.log("error");
 				setCancelStatus(false);
 				setBtnDisabled(false);
 			});
 	};
 
-	const handleClose = () => {
-		closeModal(false);
-		if (cancelStatus) {
+	const closeModal = () => {
+		handleClose(false);
+		if (cancelStatus || cancelStatusRef.current) {
 			getActiveAppointments();
 		}
 	};
 
-	const handleEscapePress = (event: KeyboardEvent) => {
+	const handleEscapePress = (event: KeyboardEvent): void => {
 		if (event.key === "Escape") {
-			handleClose();
+			closeModal();
 		}
 	};
+
+	useEffect(() => {
+		cancelStatusRef.current = cancelStatus;
+	}, [cancelStatus]);
 
 	useEffect(() => {
 		document.body.addEventListener("keydown", handleEscapePress);
@@ -54,7 +57,7 @@ function CancelModal({ closeModal, selectedId, isOpen }: ICancelModalProps) {
 		return () => {
 			document.body.removeEventListener("keydown", handleEscapePress);
 		};
-	}, [closeModal]);
+	}, [handleClose]);
 
 	return (
 		<Portal>
@@ -83,7 +86,7 @@ function CancelModal({ closeModal, selectedId, isOpen }: ICancelModalProps) {
 							</button>
 							<button
 								className="modal__close"
-								onClick={() => handleClose()}
+								onClick={() => closeModal()}
 							>
 								Close
 							</button>

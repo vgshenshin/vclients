@@ -55,7 +55,7 @@ function AppointmentList() {
 				);
 			})}
 			<CancelModal
-				closeModal={setIsOpen}
+				handleClose={setIsOpen}
 				selectedId={selectedId}
 				isOpen={isOpen}
 			/>
