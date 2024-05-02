@@ -1,0 +1,21 @@
+@import "../../style/variables.scss";
+
+.page-not-found {
+    margin-top: 50px;
+    h1 {
+        text-align: center;
+        margin-top: 20px;
+    }
+    button {
+        display: block;
+        margin: 20px auto 0 auto;
+        padding: 5px 20px;
+        background-color: $main-color;
+        border-radius: 4px;
+		cursor: pointer;
+        border: none;
+        &:hover {
+			background-color: $disabled;
+		}
+    }
+}

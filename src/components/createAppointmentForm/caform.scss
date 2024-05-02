@@ -51,7 +51,7 @@
 		color: rgba(0, 0, 0, 0.7);
 		transition: 0.3s all;
 		&:hover {
-			background-color: #cca405;
+			background-color: $disabled;
 		}
 		&:disabled {
 			background-color: $disabled;
