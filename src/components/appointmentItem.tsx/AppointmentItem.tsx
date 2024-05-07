@@ -6,8 +6,8 @@ import { Optional } from "utility-types";
 import { IAppointment } from "../../shared/interfaces/appointment.interface";
 
 type AppointmentProps = Optional<IAppointment, "canceled"> & {
-	openModal: (state: number) => void;
-	getActiveAppointments: () => void;
+	openModal?: (state: number) => void;
+	getActiveAppointments?: () => void;
 };
 
 const AppointmentItem = memo(
@@ -24,6 +24,7 @@ const AppointmentItem = memo(
 		const [timeLeft, changeTimeLeft] = useState<string | null>(null);
 
 		useEffect(() => {
+			const intervalId = setInterval(setTime, 60000);
 			setTime();
 
 			function getZero(num: number) {
@@ -42,7 +43,6 @@ const AppointmentItem = memo(
 
 				changeTimeLeft(`${hours}:${mimutes}`);
 			}
-			const intervalId = setInterval(setTime, 60000);
 			return () => clearInterval(intervalId);
 		}, [date]);
 
@@ -59,7 +59,7 @@ const AppointmentItem = memo(
 					</span>
 					<span className="appointment__phone">Phone: {phone}</span>
 				</div>
-				{!canceled ? (
+				{!canceled && openModal ? (
 					<>
 						<div className="appointment__time">
 							<span>Time left:</span>
@@ -70,7 +70,9 @@ const AppointmentItem = memo(
 						<button
 							className="appointment__cancel"
 							onClick={() => {
-								openModal(id);
+								if (openModal) {
+									openModal(id);
+								}
 							}}
 						>
 							Cancel

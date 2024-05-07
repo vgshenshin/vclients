@@ -24,7 +24,10 @@ const useAppointmentService = () => {
 				hasRequaredFields(item, requaredFields)
 			)
 		) {
-			return res;
+			return res.sort(
+				(a: IAppointment, b: IAppointment) =>
+					new Date(a.date).getTime() - new Date(b.date).getTime()
+			);
 		} else {
 			throw new Error(`Data doesn't have all the fields`);
 		}
