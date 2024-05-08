@@ -15,12 +15,13 @@ function AppointmentList() {
 	const {
 		appointmentLoadingStatus,
 		activeAppointment,
+		calendarDate,
 		getActiveAppointments,
 	} = useContext(AppointmentContext);
 
 	useEffect(() => {
 		getActiveAppointments();
-	}, []);
+	}, [calendarDate]);
 
 	const handleOpenModal = useCallback((id: number) => {
 		setIsOpen(true);

@@ -1,6 +1,34 @@
+@import '../../style/variables.scss';
+
 .calendar {
 	width: 280px;
 	height: 272px;
-	background-color: #fff;
 	box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+	.react-calendar {
+		background: $main-color;
+		border-radius: 10px;
+		box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+	}
+	.react-calendar__tile {
+		&:hover {
+			background: $disabled;
+		}
+	}
+	.react-calendar__tile--active {
+		background: $inputs;
+		color: black;
+		font-weight: bold;
+		&:enabled:hover {
+			background: $disabled;
+		}
+		&:enabled:focus {
+			background: $disabled;
+		}
+	}
+	.react-calendar__tile--hover {
+		background: $inputs;
+		&:enabled:hover {
+			background: $inputs;
+		}
+	}
 }
