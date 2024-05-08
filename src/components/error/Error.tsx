@@ -1,4 +1,10 @@
-function Error() {
+import { ComponentProps } from "react";
+
+interface ErrorProps extends ComponentProps<"svg"> {
+	msg?: string;
+}
+
+function Error(props: ErrorProps) {
 	return (
 		<svg
 			version="1.1"
