@@ -2,12 +2,25 @@
 
 .calendar {
 	width: 280px;
-	height: 272px;
+	height: 280px;
 	box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
 	.react-calendar {
 		background: $main-color;
 		border-radius: 10px;
 		box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+	}
+	.react-calendar__navigation button:enabled:hover, 
+	.react-calendar__navigation button:disabled {
+		background-color: #aa6900;
+	}
+	.react-calendar__navigation button:enabled:focus {
+		background-color: $main-color;
+	}
+	.react-calendar__navigation__prev2-button {
+		border-radius: 10px 0 0 0;
+	}
+	.react-calendar__navigation__next2-button {
+		border-radius: 0 10px 0 0;
 	}
 	.react-calendar__tile {
 		&:hover {
@@ -29,6 +42,36 @@
 		background: $inputs;
 		&:enabled:hover {
 			background: $inputs;
+		}
+	}
+	.react-calendar__tile--now {
+		background: #ffaa00;
+	}
+	.react-calendar__month-view__days button:nth-last-child(1) {
+		border-radius: 0 0 10px 0;
+	}
+	.react-calendar__month-view__days button:nth-last-child(7) {
+		border-radius: 0 0 0 10px;
+	}
+	&__reset {
+		width: 220px;
+		height: 40px;
+		display: block;
+		margin: 20px auto 0 auto;
+		border: 1px solid rgba(0, 0, 0, 0.4);
+		border-radius: 24px;
+		cursor: pointer;
+		background-color: #fbe48a;
+		font-weight: 600;
+		font-size: 15px;
+		line-height: 20px;
+		color: rgba(0, 0, 0, 0.7);
+		transition: 0.3s all;
+		&:hover {
+			background-color: $disabled;
+		}
+		&:disabled {
+			background-color: $disabled;
 		}
 	}
 }
