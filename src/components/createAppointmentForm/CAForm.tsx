@@ -39,7 +39,7 @@ function CAForm() {
 				getActiveAppointments();
 			})
 			.catch(() => {
-				alert("Error while creating new appointment");
+				alert("Ошибка при создании новой записи");
 			});
 	};
 
@@ -54,7 +54,7 @@ function CAForm() {
 
 	return (
 		<form className="caform" onSubmit={handleSubmit}>
-			<div className="caform__title">Создать новую встречу</div>
+			<div className="caform__title">Создать новую запись</div>
 			<label htmlFor="name">
 				Имя<span>*</span>
 			</label>

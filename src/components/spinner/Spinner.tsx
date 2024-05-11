@@ -12,7 +12,7 @@ function Spinner() {
 			viewBox="0 0 100 100"
 			preserveAspectRatio="xMidYMid"
 		>
-			<rect x="17.5" y="30" width="15" height="40" fill="#f3ab9b">
+			<rect x="17.5" y="30" width="15" height="40" fill="#6e49cc">
 				<animate
 					attributeName="y"
 					repeatCount="indefinite"
@@ -34,7 +34,7 @@ function Spinner() {
 					begin="-0.2898550724637681s"
 				></animate>
 			</rect>
-			<rect x="42.5" y="30" width="15" height="40" fill="#c1c1c1">
+			<rect x="42.5" y="30" width="15" height="40" fill="#8384cc">
 				<animate
 					attributeName="y"
 					repeatCount="indefinite"
@@ -56,7 +56,7 @@ function Spinner() {
 					begin="-0.14492753623188406s"
 				></animate>
 			</rect>
-			<rect x="67.5" y="30" width="15" height="40" fill="#ea0000">
+			<rect x="67.5" y="30" width="15" height="40" fill="#2d4f8c">
 				<animate
 					attributeName="y"
 					repeatCount="indefinite"

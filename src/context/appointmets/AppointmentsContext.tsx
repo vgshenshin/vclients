@@ -51,9 +51,9 @@ const AppointmentContextProvider = ({ children }: ProviderProps) => {
 							state.calendarDate[1]
 						) {
 							if (
-								new Date(item.date).getTime() >
+								new Date(item.date).getTime() >=
 									new Date(state.calendarDate[0]).getTime() &&
-								new Date(item.date).getTime() <
+								new Date(item.date).getTime() <=
 									new Date(state.calendarDate[1]).getTime()
 							) {
 								return item;

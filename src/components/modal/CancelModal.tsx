@@ -71,8 +71,7 @@ function CancelModal({ handleClose, selectedId, isOpen }: ICancelModalProps) {
 				<div className="modal" ref={nodeRef}>
 					<div className="modal__body">
 						<span className="modal__title">
-							Are you sure you want to delete the appointment №
-							{selectedId}?
+							Вы уверены, что хотите отменить запись?
 						</span>
 						<div className="modal__btns">
 							<button
@@ -82,21 +81,21 @@ function CancelModal({ handleClose, selectedId, isOpen }: ICancelModalProps) {
 									handleCancelAppointment(selectedId);
 								}}
 							>
-								Ok
+								Да
 							</button>
 							<button
 								className="modal__close"
 								onClick={() => closeModal()}
 							>
-								Close
+								Закрыть
 							</button>
 						</div>
 						<div className="modal__status">
 							{cancelStatus === null
 								? ""
 								: cancelStatus
-								? "Success"
-								: "Error, please try again"}
+								? "Запись отменена"
+								: "Ошибка, пожалуйста попробуйте снова"}
 						</div>
 					</div>
 				</div>

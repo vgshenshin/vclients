@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 
 import CancelModal from "../modal/CancelModal";
-import AppointmentItem from "../appointmentItem.tsx/AppointmentItem";
+import AppointmentItem from "../appointmentItem/AppointmentItem";
 import Spinner from "../spinner/Spinner";
 import Error from "../error/Error";
 import { AppointmentContext } from "../../context/appointmets/AppointmentsContext";
@@ -38,7 +38,7 @@ function AppointmentList() {
 					className="schedule__reload"
 					onClick={getActiveAppointments}
 				>
-					Try to reload
+					Загрузить снова
 				</button>
 			</>
 		);
@@ -46,6 +46,10 @@ function AppointmentList() {
 
 	return (
 		<>
+			{activeAppointment.length === 0 ? (
+				<h2 className="no-data">Нет записей в данном диапазоне дат</h2>
+			) : null}
+
 			{activeAppointment.map((item) => {
 				return (
 					<AppointmentItem

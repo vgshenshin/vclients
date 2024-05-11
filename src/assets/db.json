@@ -2,58 +2,58 @@
   "appointments": [
     {
       "id": "1",
-      "date": "2024-05-12T19:15",
-      "name": "Alex Smith",
-      "service": "Manicure",
-      "phone": "+1 948 945 344",
+      "date": "2024-06-12T19:15",
+      "name": "Александра",
+      "service": "Маникюр",
+      "phone": "+7 918 945 34 25",
       "canceled": false
     },
     {
       "id": "2",
       "date": "2024-04-10T15:15",
-      "name": "Sam Smith",
-      "service": "Pedicure",
-      "phone": "+1 746 235 890",
+      "name": "Юлия",
+      "service": "Педикюр",
+      "phone": "+7 900 235 89 00",
       "canceled": false
     },
     {
       "id": "3",
-      "date": "2024-04-02T09:00",
-      "name": "Alex Collson",
-      "service": "Manicure",
-      "phone": "+1 238 545 045",
+      "date": "2024-07-02T09:00",
+      "name": "Светлана",
+      "service": "Стрижка",
+      "phone": "+7 938 545 04 55",
       "canceled": true
     },
     {
       "id": "4",
-      "date": "2024-05-29T09:10",
-      "name": "Kim Paul",
-      "service": "Cleaning",
-      "phone": "+1 928 345 356",
+      "date": "2024-06-29T09:10",
+      "name": "Екатерина",
+      "service": "Окрашивание",
+      "phone": "+7 928 345 35 76",
       "canceled": false
     },
     {
       "id": "5",
-      "date": "2024-04-11T10:00",
-      "name": "Innes Olaf",
-      "service": "Haircut",
-      "phone": "+1 458 895 888",
+      "date": "2024-05-11T10:00",
+      "name": "Ирина",
+      "service": "Коррекция бровей",
+      "phone": "+7 961 895 88 38",
       "canceled": false
     },
     {
       "id": "6",
-      "date": "2024-04-09T14:00",
-      "name": "Yan Somer",
-      "service": "Haircut",
-      "phone": "+1 678 995 484",
+      "date": "2024-06-09T14:00",
+      "name": "Яна",
+      "service": "Укладка",
+      "phone": "+7 988 995 48 14",
       "canceled": true
     },
     {
       "id": "7",
-      "date": "2024-05-10T08:40:00",
-      "name": "John Cena",
-      "service": "Beard",
-      "phone": "+1 333 835 438",
+      "date": "2024-06-10T08:40:00",
+      "name": "Евгений",
+      "service": "Коррекция бороды",
+      "phone": "+7 918 835 43 68",
       "canceled": false
     }
   ]

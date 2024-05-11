@@ -51,18 +51,18 @@ const AppointmentItem = memo(
 			<div className="appointment">
 				<div className="appointment__info">
 					<span className="appointment__date">
-						Date: {formatedDate}
+						Дата: {formatedDate}
 					</span>
-					<span className="appointment__name">Name: {name}</span>
+					<span className="appointment__name">Имя: {name}</span>
 					<span className="appointment__service">
-						Service: {service}
+						Услуга: {service}
 					</span>
-					<span className="appointment__phone">Phone: {phone}</span>
+					<span className="appointment__phone">Телефон: {phone}</span>
 				</div>
 				{!canceled && openModal ? (
 					<>
 						<div className="appointment__time">
-							<span>Time left:</span>
+							<span>До записи:</span>
 							<span className="appointment__timer">
 								{timeLeft}
 							</span>
@@ -75,12 +75,12 @@ const AppointmentItem = memo(
 								}
 							}}
 						>
-							Cancel
+							Отмена
 						</button>
 					</>
 				) : null}
 				{canceled ? (
-					<div className="appointment__canceled">Canceled</div>
+					<div className="appointment__canceled">Отменена</div>
 				) : null}
 			</div>
 		);

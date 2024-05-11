@@ -50,11 +50,16 @@
 		padding: 4px 0;
 		background: #ffffff;
 		border: 1px solid $cancel;
+		border-radius: 24px;
 		font-weight: 600;
 		font-size: 12px;
 		line-height: 16px;
 		color: rgba(0, 0, 0, 0.7);
 		cursor: pointer;
+		&:hover {
+			color: #fff;
+			background-color: $cancel;
+		}
 		&:disabled {
 			background: $disabled;
 			border: 1px solid rgba(254, 219, 81, 0.7);
@@ -67,6 +72,7 @@
 		padding: 4px 0;
 		background: #c1c1c1;
 		border: 1px solid $disabled;
+		border-radius: 24px;
 		font-weight: 600;
 		font-size: 12px;
 		line-height: 16px;
